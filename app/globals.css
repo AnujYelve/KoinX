@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  /* prevent sideways scroll bleed on mobile */
+  max-width: 100%;
+}
+
+/* Tooltip transition — shared by both GainCell and PriceCell */
+.tooltip-box {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  transform: translateY(2px);
+}
+
+.group:hover .tooltip-box {
+  opacity: 1 !important;
+  transform: translateY(0);
+}
+
+/* Fix mobile tooltip overflow */
+@media (max-width: 640px) {
+  .how-it-works-tooltip {
+    position: absolute !important;
+    left: auto !important;
+    right: -1rem !important; /* Anchor towards the right to keep it on screen */
+    top: 100% !important;
+    margin-top: 1.25rem !important; /* Pushed down as requested */
+    width: 280px !important;
+    max-width: 90vw !important;
+  }
+
+  .how-it-works-tooltip > div.absolute {
+    /* Restore the arrow and align it with the text */
+    display: block !important;
+    left: auto !important;
+    right: 2rem !important; /* Arrow pointing exactly at the link */
+  }
+}
+
+/* Custom checkbox styling */
+.custom-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #d1d5db;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: background-color 0.1s, border-color 0.1s;
+}
+
+.custom-checkbox:checked {
+  background-color: #2563EB;
+  border-color: #2563EB;
+}
+
+.custom-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 0px;
+  width: 5px;
+  height: 9px;
+  border: 2px solid white;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox:focus {
+  outline: 2px solid #93c5fd;
+  outline-offset: 1px;
+}
+
+/* Table row hover */
+.holdings-row:hover {
+  background-color: rgba(37, 99, 235, 0.04);
+}
+
+.dark .holdings-row:hover {
+  background-color: rgba(37, 99, 235, 0.08);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 3px;
+}
